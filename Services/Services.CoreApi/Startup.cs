@@ -5,6 +5,12 @@ namespace devdeer.IgSample.Services.CoreApi
     using System.Linq;
     using System.Reflection;
 
+    using Logic.Core;
+    using Logic.DataAccess;
+    using Logic.DataAccess.TestRepositories;
+    using Logic.Shared.Interfaces;
+    using Logic.Shared.Models;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -65,9 +71,20 @@ namespace devdeer.IgSample.Services.CoreApi
                     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                     c.IncludeXmlComments(xmlPath);
-                }
-            );
-            
+                });
+            // configure DI
+            if (bool.Parse(Configuration["App:UseTestData"]))
+            {
+                services.AddTransient<IRepository<ArticleEntity>, TestArticleRepository>();
+            }
+            else
+            {
+                services.AddTransient<IRepository<ArticleEntity>, ArticleRepository>();
+                services.AddTransient<IRepository<EmployeeEntity>, EmployeeRepository>();
+            }
+            services.AddTransient<ILogic<ArticleEntity>, ArticleLogic>();
+            services.AddTransient<ILogic<EmployeeEntity>, EmployeeLogic>();
+
             services.AddControllers();
         }
 

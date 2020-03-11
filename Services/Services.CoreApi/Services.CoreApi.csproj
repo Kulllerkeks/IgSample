@@ -18,5 +18,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Logic\Logic.Core\Logic.Core.csproj" />
+    <ProjectReference Include="..\..\Logic\Logic.DataAccess\Logic.DataAccess.csproj" />
+  </ItemGroup>
+
 
 </Project>
