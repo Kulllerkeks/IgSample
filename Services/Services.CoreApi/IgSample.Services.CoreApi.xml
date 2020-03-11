@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IgSample.Services.CoreApi</name>
+    </assembly>
+    <members>
+        <member name="M:devdeer.IgSample.Services.CoreApi.Controllers.SampleController.Get(System.String)">
+            <summary>
+            Inverses a given <paramref name="sample"/> string and retrieves it.
+            </summary>
+            <param name="sample">The text to reverse.</param>
+            <returns>The reversed text.</returns>
+        </member>
+    </members>
+</doc>

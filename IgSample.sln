@@ -3,9 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CA9F3B5F-F2CC-48B5-8876-2DAF871DB601}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{607F2F74-B241-4D95-9CE9-5A078667A4A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{49A19B11-192E-4E58-B004-07024A5C24EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.CoreApi", "Services\Services.CoreApi\Services.CoreApi.csproj", "{EA70E74A-8479-48A3-9981-D9498C6FBD2C}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA70E74A-8479-48A3-9981-D9498C6FBD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA70E74A-8479-48A3-9981-D9498C6FBD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA70E74A-8479-48A3-9981-D9498C6FBD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA70E74A-8479-48A3-9981-D9498C6FBD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA70E74A-8479-48A3-9981-D9498C6FBD2C} = {CA9F3B5F-F2CC-48B5-8876-2DAF871DB601}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9F6CFF6-1A72-4C22-A463-5112AB7C059E}
