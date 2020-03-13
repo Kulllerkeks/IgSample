@@ -38,6 +38,7 @@ namespace devdeer.IgSample.Services.CoreApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("Default");
             app.UseSwagger();
             app.UseSwaggerUI(
                 c =>
@@ -72,6 +73,11 @@ namespace devdeer.IgSample.Services.CoreApi
                     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                     c.IncludeXmlComments(xmlPath);
                 });
+            // CORS
+            services.AddCors(
+                o => o.AddPolicy(
+                    "Default",
+                    p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
             // configure DI
             if (bool.Parse(Configuration["App:UseTestData"]))
             {
