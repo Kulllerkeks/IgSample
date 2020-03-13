@@ -7,6 +7,8 @@
     using System.Text.Json.Serialization;
     using System.Threading.Tasks;
 
+    using ApiHelpers;
+
     using devdeer.IgSample.Logic.Shared.Models;
 
     using Microsoft.AspNetCore.Mvc;
@@ -21,30 +23,21 @@
     {
         #region member vars
 
-        private readonly ILogger<EmployeeController> _logger;
-
-        private readonly IConfiguration _config;
+        private readonly EmployeeApiHelper _apiHelper;
 
         #endregion
 
         #region constructors and destructors
 
-        public EmployeeController(IConfiguration config)
+        public EmployeeController(EmployeeApiHelper helper)
         {
-            _config = config;
+            _apiHelper = helper;
         }
 
         [HttpGet]
         public async Task<IEnumerable<EmployeeEntity>> Get()
         {
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri($"{_config["Api:BaseUrl"]}")
-            };
-            var result = await client.GetAsync("Employee");
-            var resultText = await result.Content.ReadAsStringAsync();
-            var decoded = JsonConvert.DeserializeObject<IEnumerable<EmployeeEntity>>(resultText);
-            return decoded;
+            return await _apiHelper.GetAllAsync();
         }
 
         #endregion
