@@ -12,10 +12,14 @@
 
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// API helper for communication towards the Employee API.
+    /// </summary>
     public class EmployeeApiHelper : BaseApiHelper
     {
         #region constructors and destructors
 
+        /// <inheritdoc />
         public EmployeeApiHelper(HttpClient client, IConfiguration config) : base(client, config)
         {
         }
@@ -24,6 +28,10 @@
 
         #region methods
 
+        /// <summary>
+        /// Retrieves a list of all employees from the API.
+        /// </summary>
+        /// <returns>The list of employees.</returns>
         public async Task<IEnumerable<EmployeeEntity>> GetAllAsync()
         {
             var result = await Client.GetAsync("Employee");

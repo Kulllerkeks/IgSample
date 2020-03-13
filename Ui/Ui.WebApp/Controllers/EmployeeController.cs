@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
-    using System.Text.Json.Serialization;
     using System.Threading.Tasks;
 
     using ApiHelpers;
@@ -12,11 +10,10 @@
     using devdeer.IgSample.Logic.Shared.Models;
 
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Logging;
 
-    using Newtonsoft.Json;
-
+    /// <summary>
+    /// API controller exposing endpoints for React for targetting Employee-related data.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
@@ -29,11 +26,23 @@
 
         #region constructors and destructors
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="helper">The API helper for Employee backend data.</param>
         public EmployeeController(EmployeeApiHelper helper)
         {
             _apiHelper = helper;
         }
 
+        #endregion
+
+        #region methods
+
+        /// <summary>
+        /// Retrieves a list of all employees from the API.
+        /// </summary>
+        /// <returns>The list of employees.</returns>
         [HttpGet]
         public async Task<IEnumerable<EmployeeEntity>> Get()
         {
